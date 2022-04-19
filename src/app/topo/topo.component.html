@@ -17,9 +17,13 @@
               #TermoDaPesquisa
               (keyup)="pesquisa(TermoDaPesquisa.value)"
             >
-            <div class="list-group"  style="position:absolute">
-              <a href="#" class="list-group-item list-group-item-action " *ngFor="let pesquisa of ofertas2" aria-current="true">
-                {{pesquisa.titulo}}
+            <div class="list-group"  style="position:absolute;z-index: 999;"  >
+              <a *ngFor="let pesquisa of ofertas | async"
+                [routerLink]="['/oferta', pesquisa.id ]"
+                (click)="limpaPesquisa()"
+                href="#" class="list-group-item list-group-item-action " 
+                aria-current="true">
+                  {{pesquisa.titulo | descricaoReduzida:15 }}
               </a>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes'
@@ -14,6 +14,9 @@ import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 
+//pipe
+import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,7 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
     OfertaComponent,
     ComoUsarComponent,
     OndeFicaComponent,
+    DescricaoReduzida,
     
   ],
   imports: [
@@ -32,7 +36,9 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
     HttpModule,
     RouterModule.forRoot(ROUTES),
   ],
-  providers: [],
+  providers: [ 
+    { provide: LOCALE_ID, useValue: 'pt-BR'} 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
